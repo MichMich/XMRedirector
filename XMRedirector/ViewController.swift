@@ -13,26 +13,18 @@ enum CellIdentifiers: String {
     case Action = "CellIdentifierAction"
 }
 
-struct Contact {
-    var name:String
-    var number:String
-    var image:String
-}
 
 
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    let contacts:[Contact] = [
-        Contact(name: "Raymond", number: "06 54 25 72 31", image: "https://pbs.twimg.com/profile_images/2702827401/b7a754378f178d0e1d1bad94c81ce1b3_400x400.jpeg"),
-        Contact(name: "Michael", number: "06 51 71 36 15", image: "https://pbs.twimg.com/profile_images/1195146498/image.jpg"),
-        Contact(name: "Natascha", number: "06 21 50 03 16", image: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c34.34.431.431/s160x160/398797_103835056418671_925295838_n.jpg?oh=2e258b1b3c7854ec920c75a176a317df&oe=549A06EF&__gda__=1418848380_874d680813abad787cbb71ceb5b9e2ab"),
-        Contact(name: "Valerie", number: "06 10 43 28 29", image: "https://pbs.twimg.com/profile_images/505471251461468160/7MkDuGla_400x400.jpeg"),
-    ]
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ContactsDelegate {
     
     let statusBarBackgroundView = UIView()
     let statusView = StatusView()
     let tableView = UITableView()
+    var refreshControl = UIRefreshControl()
+    
+    
+    let contacts = Contacts()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +33,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.registerClass(ContactTableViewCell.self, forCellReuseIdentifier: CellIdentifiers.Contact.toRaw())
-        tableView.registerClass(ActionTableViewCell.self, forCellReuseIdentifier: CellIdentifiers.Action.toRaw())
+        tableView.registerClass(ContactTableViewCell.self, forCellReuseIdentifier: CellIdentifiers.Contact.rawValue)
+        tableView.registerClass(ActionTableViewCell.self, forCellReuseIdentifier: CellIdentifiers.Action.rawValue)
+        
+
+        //refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
+        
+        
+        contacts.delegate = self
+        contacts.fetchContacts()
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         statusView.addObserver(self, forKeyPath: "center", options: NSKeyValueObservingOptions.New, context: nil)
+        
+        
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -114,6 +119,61 @@ extension ViewController {
         
     }
     
+    func refresh(sender:AnyObject)
+    {
+        contacts.fetchContacts()
+    }
+    
+    func redirectTo(contact:Contact) {
+        HUDController.sharedController.contentView = HUDContentView.ProgressView()
+        HUDController.sharedController.show()
+        
+        
+        Api.performRequestWithUri("redirect/\(contact.id)") {
+            (json, error) -> () in
+            if (error != nil) {
+                self.showError("Could not perform redirect request.")
+            } else {
+                if json?["success"].boolValue == false {
+                    self.showError(json?["message"].stringValue ?? "Unknow error")
+                }
+            }
+            self.contacts.fetchContacts()
+            HUDController.sharedController.hide()
+        }
+    }
+    
+    func removeRedirect() {
+        HUDController.sharedController.contentView = HUDContentView.ProgressView()
+        HUDController.sharedController.show()
+        
+        Api.performRequestWithUri("redirect") {
+            (json, error) -> () in
+            if (error != nil) {
+                self.showError("Could not perform redirect request.")
+            } else {
+                if json?["success"].boolValue == false {
+                    self.showError(json?["message"].stringValue ?? "Unknow error")
+                }
+            }
+            self.contacts.fetchContacts()
+            HUDController.sharedController.hide()
+        }
+    }
+    
+    func showError(message:String) {
+        showAlert("Error", message: message)
+    }
+    func showAlert(title:String, message:String) {
+        var myAlertView = UIAlertView()
+        
+        myAlertView.title = title
+        myAlertView.message = message
+        myAlertView.addButtonWithTitle("Ok")
+        
+        myAlertView.show()
+    }
+    
 }
 
 // MARK: - TableView Datasource
@@ -127,10 +187,10 @@ extension ViewController {
         switch section {
             case 0:
                 //disable forwarding
-                return (statusView.contact != nil) ? 1 : 0 // TODO: should come out of the model
+                return (contacts.activeContact() != nil) ? 1 : 0 
             case 1:
                 //contacts
-                return contacts.count
+                return contacts.list.count
             case 2:
                 //add contact
                 return 0 // disabled
@@ -152,23 +212,25 @@ extension ViewController {
         
         switch indexPath.section {
             case 0:
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifiers.Action.toRaw(), forIndexPath: indexPath) as ActionTableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifiers.Action.rawValue, forIndexPath: indexPath) as ActionTableViewCell
                 cell.actionNameLabel.text = "Cancel Call Forwarding"
                 cell.actionImageView.image = UIImage(named: "cancel")
                 return cell
             
             case 1:
                 //contacts
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifiers.Contact.toRaw(), forIndexPath: indexPath) as ContactTableViewCell
-                let contact = contacts[indexPath.row]
-                cell.contactImageView.imageURL(NSURL(string: contact.image))
+                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifiers.Contact.rawValue, forIndexPath: indexPath) as ContactTableViewCell
+                let contact = contacts.list[indexPath.row]
+                cell.contactImageView.imageURL(NSURL(string: contact.image)!)
                 cell.contactNameLabel.text = contact.name
                 cell.contactDetailLabel.text = contact.number
+                cell.active = contact.redirect_since != nil
+            
                 return cell
             
             case 2:
                 //add contact
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifiers.Action.toRaw(), forIndexPath: indexPath) as ActionTableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifiers.Action.rawValue, forIndexPath: indexPath) as ActionTableViewCell
                 cell.actionNameLabel.text = "Add Contact"
                 cell.actionImageView.image = UIImage(named: "add")
                 return cell
@@ -185,9 +247,9 @@ extension ViewController {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
             case 0:
-                statusView.contact = nil
+                removeRedirect()
             case 1:
-                statusView.contact = contacts[indexPath.row]
+                redirectTo(contacts.list[indexPath.row])
             case 2:
                 println("Add contact")
             default:
@@ -196,5 +258,19 @@ extension ViewController {
     
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, 1)), withRowAnimation: UITableViewRowAnimation.Automatic)
+    }
+}
+
+// MARK: - ContactsDelegate
+extension ViewController {
+    
+    func contactsUpdated() {
+        tableView.reloadData()
+        self.refreshControl.endRefreshing()
+        statusView.contact = contacts.activeContact()
+    }
+    
+    func contactsUpdateFailed() {
+        self.refreshControl.endRefreshing()
     }
 }

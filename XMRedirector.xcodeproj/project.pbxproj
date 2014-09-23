@@ -21,6 +21,17 @@
 		4CC6007D19C64B9A00E55478 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC6007B19C64B9A00E55478 /* cancel.png */; };
 		4CC6008019C64C5600E55478 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC6007E19C64C5600E55478 /* add.png */; };
 		4CC6008119C64C5600E55478 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC6007F19C64C5600E55478 /* add@2x.png */; };
+		4CC993BB19D1654D00F4C7AC /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993BA19D1654D00F4C7AC /* Api.swift */; };
+		4CC993BD19D16FC200F4C7AC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993BC19D16FC200F4C7AC /* SwiftyJSON.swift */; };
+		4CC993BF19D170DF00F4C7AC /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993BE19D170DF00F4C7AC /* Contacts.swift */; };
+		4CC993CA19D18E3F00F4C7AC /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C119D18E3E00F4C7AC /* FrameView.swift */; };
+		4CC993CB19D18E3F00F4C7AC /* HUDAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C219D18E3E00F4C7AC /* HUDAssets.swift */; };
+		4CC993CC19D18E3F00F4C7AC /* HUDContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C319D18E3E00F4C7AC /* HUDContentView.swift */; };
+		4CC993CD19D18E3F00F4C7AC /* HUDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C419D18E3E00F4C7AC /* HUDController.swift */; };
+		4CC993CE19D18E3F00F4C7AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CC993C519D18E3E00F4C7AC /* Images.xcassets */; };
+		4CC993CF19D18E3F00F4C7AC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CC993C619D18E3F00F4C7AC /* Info.plist */; };
+		4CC993D019D18E3F00F4C7AC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C819D18E3F00F4C7AC /* Window.swift */; };
+		4CC993D119D18E3F00F4C7AC /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C919D18E3F00F4C7AC /* WindowRootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +63,18 @@
 		4CC6007B19C64B9A00E55478 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
 		4CC6007E19C64C5600E55478 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		4CC6007F19C64C5600E55478 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
+		4CC993BA19D1654D00F4C7AC /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		4CC993BC19D16FC200F4C7AC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../../OpenSourced/SwiftyJSON/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
+		4CC993BE19D170DF00F4C7AC /* Contacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
+		4CC993C119D18E3E00F4C7AC /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		4CC993C219D18E3E00F4C7AC /* HUDAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDAssets.swift; sourceTree = "<group>"; };
+		4CC993C319D18E3E00F4C7AC /* HUDContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDContentView.swift; sourceTree = "<group>"; };
+		4CC993C419D18E3E00F4C7AC /* HUDController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDController.swift; sourceTree = "<group>"; };
+		4CC993C519D18E3E00F4C7AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4CC993C619D18E3F00F4C7AC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CC993C719D18E3F00F4C7AC /* PKHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHUD.h; sourceTree = "<group>"; };
+		4CC993C819D18E3F00F4C7AC /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		4CC993C919D18E3F00F4C7AC /* WindowRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowRootViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +123,8 @@
 				4C9CA6A019C2227500120E8C /* ContactTableViewCell.swift */,
 				4CC6007819C6478B00E55478 /* ActionTableViewCell.swift */,
 				4C9CA67A19C21C5400120E8C /* Supporting Files */,
+				4CC993BA19D1654D00F4C7AC /* Api.swift */,
+				4CC993BE19D170DF00F4C7AC /* Contacts.swift */,
 			);
 			path = XMRedirector;
 			sourceTree = "<group>";
@@ -147,9 +172,28 @@
 		4CC6002719C5E4D600E55478 /* Open Source */ = {
 			isa = PBXGroup;
 			children = (
+				4CC993C019D18E3E00F4C7AC /* PKHUD */,
+				4CC993BC19D16FC200F4C7AC /* SwiftyJSON.swift */,
 				4CC6002C19C5E88800E55478 /* PASImageView.swift */,
 			);
 			name = "Open Source";
+			sourceTree = "<group>";
+		};
+		4CC993C019D18E3E00F4C7AC /* PKHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4CC993C119D18E3E00F4C7AC /* FrameView.swift */,
+				4CC993C219D18E3E00F4C7AC /* HUDAssets.swift */,
+				4CC993C319D18E3E00F4C7AC /* HUDContentView.swift */,
+				4CC993C419D18E3E00F4C7AC /* HUDController.swift */,
+				4CC993C519D18E3E00F4C7AC /* Images.xcassets */,
+				4CC993C619D18E3F00F4C7AC /* Info.plist */,
+				4CC993C719D18E3F00F4C7AC /* PKHUD.h */,
+				4CC993C819D18E3F00F4C7AC /* Window.swift */,
+				4CC993C919D18E3F00F4C7AC /* WindowRootViewController.swift */,
+			);
+			name = PKHUD;
+			path = ../../OpenSourced/PKHUD/PKHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +277,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC6007C19C64B9A00E55478 /* cancel@2x.png in Resources */,
+				4CC993CE19D18E3F00F4C7AC /* Images.xcassets in Resources */,
+				4CC993CF19D18E3F00F4C7AC /* Info.plist in Resources */,
 				4CC6002519C5D73E00E55478 /* face.jpg in Resources */,
 				4CC6008019C64C5600E55478 /* add.png in Resources */,
 				4C9CA68219C21C5400120E8C /* Main.storyboard in Resources */,
@@ -258,10 +304,19 @@
 			files = (
 				4C9CA6A119C2227500120E8C /* ContactTableViewCell.swift in Sources */,
 				4C9CA67F19C21C5400120E8C /* ViewController.swift in Sources */,
+				4CC993CB19D18E3F00F4C7AC /* HUDAssets.swift in Sources */,
+				4CC993BF19D170DF00F4C7AC /* Contacts.swift in Sources */,
 				4CC6007919C6478B00E55478 /* ActionTableViewCell.swift in Sources */,
+				4CC993BD19D16FC200F4C7AC /* SwiftyJSON.swift in Sources */,
+				4CC993CC19D18E3F00F4C7AC /* HUDContentView.swift in Sources */,
 				4C9CA67D19C21C5400120E8C /* AppDelegate.swift in Sources */,
 				4CC6002D19C5E88800E55478 /* PASImageView.swift in Sources */,
+				4CC993D019D18E3F00F4C7AC /* Window.swift in Sources */,
+				4CC993BB19D1654D00F4C7AC /* Api.swift in Sources */,
+				4CC993CA19D18E3F00F4C7AC /* FrameView.swift in Sources */,
 				4C9CA69F19C21CAB00120E8C /* StatusView.swift in Sources */,
+				4CC993CD19D18E3F00F4C7AC /* HUDController.swift in Sources */,
+				4CC993D119D18E3F00F4C7AC /* WindowRootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

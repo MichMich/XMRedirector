@@ -10,13 +10,19 @@ import UIKit
 
 class StatusView: UIView {
     
+    let dateFormatter = NSDateFormatter()
     
     var contact:Contact? {
         didSet {
             if contact != nil {
                 stateActive = true
                 contactNameLabel.text = contact!.name
-                contactImageView.imageURL(NSURL(string:contact!.image))
+                contactImageView.imageURL(NSURL(string:contact!.image)!)
+                
+                
+                let redirect_since = dateFormatter.stringFromDate(contact!.redirect_since!)
+                statusLabel.text = "Redirect since: \(redirect_since)"
+                
             } else {
                 stateActive = false
                 contactNameLabel.text = "Forwarding Disabled"
@@ -54,6 +60,7 @@ class StatusView: UIView {
     override init() {
         super.init()
         setup()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -71,13 +78,13 @@ class StatusView: UIView {
         
         contactNameLabel.textColor = UIColor.whiteColor()
         contactNameLabel.font = UIFont.systemFontOfSize(24)
-        contactNameLabel.text = "Forwarding Disabled"
+        contactNameLabel.text = "Loading ..."
         contactNameLabel.textAlignment = .Center
         
         
         statusLabel.textColor = UIColor.whiteColor()
         statusLabel.font = UIFont.systemFontOfSize(12)
-        statusLabel.text = "Redirected since 12:00:00"
+        statusLabel.text = ""
         statusLabel.textAlignment = .Center
         
         addSubview(backgroundColorView)

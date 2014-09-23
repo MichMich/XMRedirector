@@ -18,6 +18,22 @@ class ContactTableViewCell: UITableViewCell {
     let contactNameLabel = UILabel()
     let contactDetailLabel = UILabel()
     
+    var active: Bool = false {
+        didSet {
+            if active {
+                backgroundColor = UIColor(white: 0.98, alpha: 1)
+                contactNameLabel.textColor = UIColor(red: 1, green: 0.5, blue: 0.25, alpha: 1)
+                contactDetailLabel.textColor = UIColor(red: 1, green: 0.5, blue: 0.25, alpha: 0.5)
+                contactImageView.backgroundProgressColor(UIColor(red: 1, green: 0.5, blue: 0.25, alpha: 1))
+            } else {
+                backgroundColor = UIColor.clearColor()
+                contactNameLabel.textColor = UIColor.blackColor()
+                contactDetailLabel.textColor = UIColor(white: 0, alpha: 0.5)
+                contactImageView.backgroundProgressColor(UIColor.whiteColor())
+            }
+        }
+    }
+    
     
     override init() {
         super.init()
@@ -34,7 +50,7 @@ class ContactTableViewCell: UITableViewCell {
         setup()
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init?(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
