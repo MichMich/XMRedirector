@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var refreshControl = UIRefreshControl()
     
     
-    let contacts = Contacts()
+    let contacts = Contacts.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +73,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 // MARK: - KVO
 extension ViewController {
     
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if object as NSObject == statusView {
             tableView.contentInset = UIEdgeInsetsMake(statusView.frame.size.height, 0, 0, 0)
         }
@@ -129,7 +129,7 @@ extension ViewController {
         HUDController.sharedController.show()
         
         
-        Api.performRequestWithUri("redirect/\(contact.id)") {
+        Api.sharedInstance.performRequestWithUri("redirect/\(contact.id)") {
             (json, error) -> () in
             if (error != nil) {
                 self.showError("Could not perform redirect request.")
@@ -147,7 +147,7 @@ extension ViewController {
         HUDController.sharedController.contentView = HUDContentView.ProgressView()
         HUDController.sharedController.show()
         
-        Api.performRequestWithUri("redirect") {
+        Api.sharedInstance.performRequestWithUri("redirect") {
             (json, error) -> () in
             if (error != nil) {
                 self.showError("Could not perform redirect request.")
@@ -265,6 +265,8 @@ extension ViewController {
 extension ViewController {
     
     func contactsUpdated() {
+        println("Contacts updated!")
+        
         tableView.reloadData()
         self.refreshControl.endRefreshing()
         statusView.contact = contacts.activeContact()

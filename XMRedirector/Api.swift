@@ -13,18 +13,31 @@ import Foundation
 
 
 struct Config {
-    static let baseURL = "http://192.168.178.106:8080/api/"
+    static let baseURL = "http://office.xonay.net:8080/api/"
     static let queueName = "nl.xonaymedia.xmredirector.api"
 }
 
 class Api {
     
+    var deviceIdentifier = ""
+    
+    class var sharedInstance : Api {
+        struct Static {
+            static let instance : Api = Api()
+        }
+        return Static.instance
+    }
+    
     //+ (void)performRequestWithUri:(NSString *)requestUri params:(NSDictionary *)params completionHandler:(void (^)(NSDictionary *, NSError *))completionBlock
     
     
-    class func performRequestWithUri(uri:String, completionHandler:(json:JSON?, error:NSError?)->()) {
+    func performRequestWithUri(uri:String, completionHandler:(json:JSON?, error:NSError?)->()) {
         
-        let url = Config.baseURL + uri
+        var url = Config.baseURL + uri.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        
+        //add the device identifier.
+        url = url + "?deviceIdentifier=" + self.deviceIdentifier.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        
         
         println(url)
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,9 +15,82 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+    func application( application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary? ) -> Bool {
+    
+        var types: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
+        
+        var settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
+        
+        application.registerUserNotificationSettings( settings )
+        application.registerForRemoteNotifications()
+        
         return true
+    }
+    
+    func application( application: UIApplication!, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData! ) {
+        
+        var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
+        
+        var deviceTokenString: String = ( deviceToken.description as NSString )
+            .stringByTrimmingCharactersInSet( characterSet )
+            .stringByReplacingOccurrencesOfString( " ", withString: " " ) as String
+        
+        println( deviceTokenString )
+        
+        Api.sharedInstance.deviceIdentifier = deviceTokenString
+        
+        Api.sharedInstance.performRequestWithUri("register") {
+            (json, error) -> () in
+            if (error != nil) {
+                println("Error: \(error)")
+            } else {
+                println("Device registered.")
+            }
+        }
+        
+    }
+    
+    func application( application: UIApplication!, didFailToRegisterForRemoteNotificationsWithError error: NSError! ) {
+        
+        println( error.localizedDescription )
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        //if let apn: AnyObject = userInfo["aps"]  {
+            
+        if let apn = userInfo["aps"] as? Dictionary<String, AnyObject> {
+            if let alert = apn["alert"] as? String {
+                
+                var alert = UIAlertController(title: nil, message: alert, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                    //Ok pressed.
+                }))
+                self.window?.rootViewController?.presentViewController(alert, animated: true, completion: { () -> Void in
+                    //Shown;
+                    
+                    Contacts.sharedInstance.fetchContacts()
+                    
+                    
+                    
+                    
+                })
+                
+            }
+            
+            if let sound = apn["sound"] as? String {
+                
+                let fileAttributes = sound.componentsSeparatedByString(".")
+                
+                if fileAttributes.count == 2 {
+                    let soundURL = NSBundle.mainBundle().URLForResource(fileAttributes[0], withExtension: fileAttributes[1])
+                    var mySound: SystemSoundID = 0
+                    AudioServicesCreateSystemSoundID(soundURL, &mySound)
+                    AudioServicesPlaySystemSound(mySound);
+                }
+                
+            }
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

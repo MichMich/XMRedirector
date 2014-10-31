@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C9590941A03FBA9009CFA0F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9590931A03FBA9009CFA0F /* SwiftyJSON.swift */; };
+		4C9590961A03FD06009CFA0F /* person.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C9590951A03FD06009CFA0F /* person.jpg */; };
 		4C9CA67D19C21C5400120E8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9CA67C19C21C5400120E8C /* AppDelegate.swift */; };
 		4C9CA67F19C21C5400120E8C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9CA67E19C21C5400120E8C /* ViewController.swift */; };
 		4C9CA68219C21C5400120E8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9CA68019C21C5400120E8C /* Main.storyboard */; };
@@ -22,7 +24,6 @@
 		4CC6008019C64C5600E55478 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC6007E19C64C5600E55478 /* add.png */; };
 		4CC6008119C64C5600E55478 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC6007F19C64C5600E55478 /* add@2x.png */; };
 		4CC993BB19D1654D00F4C7AC /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993BA19D1654D00F4C7AC /* Api.swift */; };
-		4CC993BD19D16FC200F4C7AC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993BC19D16FC200F4C7AC /* SwiftyJSON.swift */; };
 		4CC993BF19D170DF00F4C7AC /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993BE19D170DF00F4C7AC /* Contacts.swift */; };
 		4CC993CA19D18E3F00F4C7AC /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C119D18E3E00F4C7AC /* FrameView.swift */; };
 		4CC993CB19D18E3F00F4C7AC /* HUDAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C219D18E3E00F4C7AC /* HUDAssets.swift */; };
@@ -32,6 +33,7 @@
 		4CC993CF19D18E3F00F4C7AC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CC993C619D18E3F00F4C7AC /* Info.plist */; };
 		4CC993D019D18E3F00F4C7AC /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C819D18E3F00F4C7AC /* Window.swift */; };
 		4CC993D119D18E3F00F4C7AC /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC993C919D18E3F00F4C7AC /* WindowRootViewController.swift */; };
+		4CF2D38E1A04341500141CB6 /* notification.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF2D38D1A04341500141CB6 /* notification.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C9590931A03FBA9009CFA0F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../../OpenSourced/SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		4C9590951A03FD06009CFA0F /* person.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = person.jpg; sourceTree = "<group>"; };
 		4C9CA67719C21C5400120E8C /* XMRedirector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMRedirector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9CA67B19C21C5400120E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C9CA67C19C21C5400120E8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +68,6 @@
 		4CC6007E19C64C5600E55478 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		4CC6007F19C64C5600E55478 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
 		4CC993BA19D1654D00F4C7AC /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
-		4CC993BC19D16FC200F4C7AC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../../OpenSourced/SwiftyJSON/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
 		4CC993BE19D170DF00F4C7AC /* Contacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		4CC993C119D18E3E00F4C7AC /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		4CC993C219D18E3E00F4C7AC /* HUDAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDAssets.swift; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 		4CC993C719D18E3F00F4C7AC /* PKHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHUD.h; sourceTree = "<group>"; };
 		4CC993C819D18E3F00F4C7AC /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		4CC993C919D18E3F00F4C7AC /* WindowRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowRootViewController.swift; sourceTree = "<group>"; };
+		4CF2D38D1A04341500141CB6 /* notification.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = notification.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 		4CC6002619C5D74C00E55478 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4CF2D38D1A04341500141CB6 /* notification.wav */,
+				4C9590951A03FD06009CFA0F /* person.jpg */,
 				4CC6007E19C64C5600E55478 /* add.png */,
 				4CC6007F19C64C5600E55478 /* add@2x.png */,
 				4CC6007A19C64B9A00E55478 /* cancel@2x.png */,
@@ -172,8 +178,8 @@
 		4CC6002719C5E4D600E55478 /* Open Source */ = {
 			isa = PBXGroup;
 			children = (
+				4C9590931A03FBA9009CFA0F /* SwiftyJSON.swift */,
 				4CC993C019D18E3E00F4C7AC /* PKHUD */,
-				4CC993BC19D16FC200F4C7AC /* SwiftyJSON.swift */,
 				4CC6002C19C5E88800E55478 /* PASImageView.swift */,
 			);
 			name = "Open Source";
@@ -245,6 +251,7 @@
 				TargetAttributes = {
 					4C9CA67619C21C5400120E8C = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 9ZW6KB2LSP;
 					};
 					4C9CA68B19C21C5400120E8C = {
 						CreatedOnToolsVersion = 6.1;
@@ -279,7 +286,9 @@
 				4CC6007C19C64B9A00E55478 /* cancel@2x.png in Resources */,
 				4CC993CE19D18E3F00F4C7AC /* Images.xcassets in Resources */,
 				4CC993CF19D18E3F00F4C7AC /* Info.plist in Resources */,
+				4CF2D38E1A04341500141CB6 /* notification.wav in Resources */,
 				4CC6002519C5D73E00E55478 /* face.jpg in Resources */,
+				4C9590961A03FD06009CFA0F /* person.jpg in Resources */,
 				4CC6008019C64C5600E55478 /* add.png in Resources */,
 				4C9CA68219C21C5400120E8C /* Main.storyboard in Resources */,
 				4C9CA68419C21C5400120E8C /* Images.xcassets in Resources */,
@@ -305,9 +314,9 @@
 				4C9CA6A119C2227500120E8C /* ContactTableViewCell.swift in Sources */,
 				4C9CA67F19C21C5400120E8C /* ViewController.swift in Sources */,
 				4CC993CB19D18E3F00F4C7AC /* HUDAssets.swift in Sources */,
+				4C9590941A03FBA9009CFA0F /* SwiftyJSON.swift in Sources */,
 				4CC993BF19D170DF00F4C7AC /* Contacts.swift in Sources */,
 				4CC6007919C6478B00E55478 /* ActionTableViewCell.swift in Sources */,
-				4CC993BD19D16FC200F4C7AC /* SwiftyJSON.swift in Sources */,
 				4CC993CC19D18E3F00F4C7AC /* HUDContentView.swift in Sources */,
 				4C9CA67D19C21C5400120E8C /* AppDelegate.swift in Sources */,
 				4CC6002D19C5E88800E55478 /* PASImageView.swift in Sources */,
@@ -433,9 +442,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Teeuw (2M8ANKMU6C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = XMRedirector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f0a59076-18ec-4754-bbeb-4f1094d12a95";
 			};
 			name = Debug;
 		};
@@ -443,9 +455,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Teeuw (2M8ANKMU6C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = XMRedirector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f0a59076-18ec-4754-bbeb-4f1094d12a95";
 			};
 			name = Release;
 		};

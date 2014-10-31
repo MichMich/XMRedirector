@@ -20,6 +20,14 @@ struct Contact {
 
 class Contacts {
     
+    class var sharedInstance : Contacts {
+        struct Static {
+            static let instance : Contacts = Contacts()
+        }
+        return Static.instance
+    }
+    
+    
     var delegate: ContactsDelegate?
     var list = [Contact]()
     
@@ -32,7 +40,7 @@ class Contacts {
     }
     
     func fetchContacts() {
-        Api.performRequestWithUri("numbers") {
+        Api.sharedInstance.performRequestWithUri("numbers") {
             (json, error) -> () in
             if (error != nil) {
                 println("Error: \(error)")
@@ -46,13 +54,13 @@ class Contacts {
                  
                     for contact in contacts {
                         
-                        let id = contact["id"].integerValue ?? 0
+                        let id = contact["id"].intValue ?? 0
                         let name = contact["name"].stringValue ?? "Unknown"
                         let number = contact["number"].stringValue ?? "Unknown"
                         let image = contact["image"].stringValue ?? "Unknown"
                         
                         var redirect_since:NSDate?
-                        if let redirect_since_string  =  contact["redirect_since"].stringValue {
+                        if let redirect_since_string  =  contact["redirect_since"].stringValue ?? nil {
                             redirect_since = self.dateFormatter.dateFromString(redirect_since_string)
                         }
                         
