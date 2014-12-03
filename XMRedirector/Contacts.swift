@@ -37,6 +37,7 @@ class Contacts {
     
     init() {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
     }
     
     func fetchContacts() {
@@ -58,6 +59,8 @@ class Contacts {
                         let name = contact["name"].stringValue ?? "Unknown"
                         let number = contact["number"].stringValue ?? "Unknown"
                         let image = contact["image"].stringValue ?? "Unknown"
+                        
+                        println(name)
                         
                         var redirect_since:NSDate?
                         if let redirect_since_string  =  contact["redirect_since"].stringValue ?? nil {
